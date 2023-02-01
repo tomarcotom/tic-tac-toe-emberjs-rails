@@ -2,10 +2,15 @@
 
 <h1 id="title">Welcome to Tic-Tac-Toe Challenge!</h1>
 
-{{#if this.endGame}}
-  <h1>Player {{this.playerNumber}} won!</h1>
+<h3>Player 1 won {{this.player1Count}} times</h3>
+<h3>Player 2 won {{this.player2Count}} times</h3>
+
+{{#if this.isDraw}}
+  <h2>It is a draw!</h2>
+{{else if this.endGame}}
+  <h2>Player {{this.playerNumber}} won!</h2>
 {{else}}
-  <h1>Player {{this.playerNumber}} has to play now!</h1>
+  <h2>Player {{this.playerNumber}} has to play now!</h2>
 {{/if}}
 
 

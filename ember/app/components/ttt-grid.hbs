@@ -1,5 +1,9 @@
 {{yield}}
 
+{{#if this.showRestartButton}}
+  <button type="button" {{on "click" this.restart}}>Play a new game!</button>
+{{/if}}
+
 <table>
    {{#each this.gridRows as |row|}}
    <tr>
