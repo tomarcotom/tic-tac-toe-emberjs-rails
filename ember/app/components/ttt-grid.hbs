@@ -1,30 +1,13 @@
 {{yield}}
 
-<button type="button" {{on "click" this.log}}>console log</button>
-
 <table>
    {{#each this.gridRows as |row|}}
    <tr>
     {{#each row as |column|}}
-    <td id={{column.key}} onclick={{action this.ciao}}>
+    <td id={{column.key}} onclick={{action this.play}}>
       {{column.value}}
     </td>
     {{/each}}
    </tr>
    {{/each}}
-{{!--   <tr>
-    <td id="0" onclick={{action this.ciao}}></td>
-    <td id="1" onclick={{action this.ciao}}></td>
-    <td id="2"></td>
-  </tr>
-  <tr>
-    <td id="3"></td>
-    <td id="4"></td>
-    <td id="5"></td>
-  </tr>
-  <tr>
-    <td id="6"></td>
-    <td id="7"></td>
-    <td id="8"></td>
-  </tr> --}}
 </table>

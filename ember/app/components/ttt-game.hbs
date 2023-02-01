@@ -1,0 +1,12 @@
+{{yield}}
+
+<h1 id="title">Welcome to Tic-Tac-Toe Challenge!</h1>
+
+{{#if this.endGame}}
+  <h1>Player {{this.playerNumber}} won!</h1>
+{{else}}
+  <h1>Player {{this.playerNumber}} has to play now!</h1>
+{{/if}}
+
+
+{{ ttt-grid setMessage=(action "setMessage")}}
