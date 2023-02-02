@@ -1,17 +1,18 @@
 {{yield}}
 
-{{#if this.showRestartButton}}
-  <button type="button" {{on "click" this.restart}}>Play a new game!</button>
-{{/if}}
+  {{#if this.showRestartButton}}
+    <button type="button" {{on "click" this.restart}}>Play a new game!</button>
+  {{/if}}
 
-<table>
-   {{#each this.gridRows as |row|}}
-   <tr>
-    {{#each row as |column|}}
-    <td id={{column.key}} onclick={{action this.play}}>
-      {{column.value}}
-    </td>
+  <table>
+    {{#each this.gridRows as |row|}}
+    <tr>
+      {{#each row as |column|}}
+      <td id={{column.key}} onclick={{action this.play}}>
+        {{column.value}}
+      </td>
+      {{/each}}
+    </tr>
     {{/each}}
-   </tr>
-   {{/each}}
-</table>
+  </table>
+

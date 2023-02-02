@@ -27,19 +27,15 @@ export default class TttGridComponent extends Component {
 
   @action
   play(event) {
-    let validPlay = false;
-    this.gridRows.forEach((elem) => {
-      elem.forEach((innerElem) => {
-        if (innerElem.key == event.target.id && !innerElem.value) {
-          innerElem.value = this.plays % 2 === 0 ? 'X' : 'O';
-          this.plays++;
-          validPlay = true;
-        }
-      });
-    });
-    let tmp = JSON.parse(JSON.stringify(this.gridRows));
-    this.gridRows = [].concat(tmp);
-    if (validPlay) this.checkWinner();
+    let index = event.target.id.split('');
+    let cellClicked = this.gridRows[index[0]][index[1]];
+    if (!cellClicked.value && !this.end) {
+      cellClicked.value = this.plays % 2 === 0 ? 'X' : 'O';
+      this.plays++;
+      let tmp = JSON.parse(JSON.stringify(this.gridRows));
+      this.gridRows = [].concat(tmp);
+      this.checkWinner();
+    }
   }
 
   checkWinner() {
@@ -54,7 +50,7 @@ export default class TttGridComponent extends Component {
       }
     });
     if (this.plays === 9 && !this.end) this.isDraw = true;
-    this.args.setMessage(this.end, false, this.isDraw);
+    this.args.updateStatus(this.end, false, this.isDraw);
   }
 
   @action
@@ -62,7 +58,7 @@ export default class TttGridComponent extends Component {
     this.initialiseVariables();
     for (let j = 0; j < 3; j++) {
       for (let i = 0; i < 3; i++) {
-        this.board.push({ key: [i, j].join(''), value: '' });
+        this.board.push({ key: [j, i].join(''), value: '' });
       }
     }
     for (let i = 0; i < this.board.length; i += 3) {
@@ -73,7 +69,7 @@ export default class TttGridComponent extends Component {
   @action
   restart() {
     this.initialiseBoard();
-    this.args.setMessage(this.end, true, this.isDraw);
+    this.args.updateStatus(this.end, true, this.isDraw);
   }
 
   initialiseVariables() {
