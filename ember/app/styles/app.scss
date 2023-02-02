@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.winningCell {
+  background-color: rgb(216, 216, 216);
+}
+
 td {
   border: 1px solid black;
   height: 5rem;
@@ -16,5 +20,5 @@ td {
 
 button {
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }

@@ -46,6 +46,7 @@ export default class TttGridComponent extends Component {
         this.gridRows[a[0]][a[1]].value === this.gridRows[b[0]][b[1]].value &&
         this.gridRows[b[0]][b[1]].value === this.gridRows[c[0]][c[1]].value
       ) {
+        this.gridRows[a[0]][a[1]].class = this.gridRows[b[0]][b[1]].class = this.gridRows[c[0]][c[1]].class = 'winningCell';
         this.end = true;
       }
     });
@@ -58,7 +59,7 @@ export default class TttGridComponent extends Component {
     this.initialiseVariables();
     for (let j = 0; j < 3; j++) {
       for (let i = 0; i < 3; i++) {
-        this.board.push({ key: [j, i].join(''), value: '' });
+        this.board.push({ key: [j, i].join(''), value: '', class: '' });
       }
     }
     for (let i = 0; i < this.board.length; i += 3) {
